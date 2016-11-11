@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WebServer</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>WebServer</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container">
+				<nav>
+					<h1>Rucoy Online!</h1>
+					<ul class="nav navbar-nav navbar-right">
+						<li><%= link_to "Home",   'welcome/index' %></li>
+						<li><%= link_to "Leaderboards",   '#' %></li>
+						<li><%= link_to "About Us",   '#' %></li>
+						<li><%= link_to "Contact Us",   '#' %></li>
+						<li><%= link_to "Login", '#' %></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
 
-<%= yield %>
+		<div class="container">
+			<%= yield %>
+		</div>
 
-</body>
+	</body>
 </html>
