@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 <head>
   <title>Rucoy Online!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -17,15 +16,19 @@
 						<li><%= link_to "Leaderboards",   '#' %></li>
 						<li><%= link_to "About Us",   '/welcome/about_us' %></li>
 						<li><%= link_to "Contact Us",   '/welcome/contact_us' %></li>
-						<li><%= link_to "Login", '#' %></li>
-            <li>
-              <% if current_user %>
-                Signed in as <strong><%= current_user.name %></strong>!
-                <%= link_to "Sign out", signout_path, id: "sign_out" %>
-              <% else %>
-                <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-              <% end %>
-            </li>
+						<% if current_user %>
+							<li>
+								<li><%= link_to "Profile",   '#' %></li>
+							</li>
+							<li>
+								Signed in as <strong><%= current_user.name %></strong>!
+								<%= link_to "Sign out", signout_path, id: "sign_out" %>
+							</li>
+						<% else %>
+							<li>
+								<%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+							</li>
+						<% end %>
 					</ul>
 				</nav>
 			</div>
