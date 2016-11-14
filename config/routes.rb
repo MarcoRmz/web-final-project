@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'characters/highscores'
+  get 'characters/show'
+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/500.html')
   get 'signout', to: 'sessions#destroy', as: 'signout'
