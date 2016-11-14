@@ -1,2 +1,40 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+h1 {
+	color: gold;
+	display: inline;
+}
+
+h2 {
+	font-size: 26px;
+}
+
+h3 {
+	font-size: 22px;
+}
+
+p .features {
+	font-size: 18px;
+}
+
+.navbar-inverse {
+	background-color: #365e36;
+    border-color: #365e36;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: #8BC34A;
+}
+
+.carousel {
+	max-width: 750px;
+}
+
+.downloadBtn {
+	width: 250px;
+}
