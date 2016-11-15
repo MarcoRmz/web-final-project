@@ -1,2 +1,8 @@
-<h1>Characters#show</h1>
-<p>Find me in app/views/characters/show.html.erb</p>
+<h1><%= @character["name"] %></h1>
+<p>Level: <%= @character["level"] %></p>
+<p>Experience: <%= @character["experience"] %></p>
+<p>Class: <%= @character["class"] %></p>
+<p>Member since: <%= @character["created_at"] %></p>
+<p>Last logged in: <%= @character["updated_at"] %></p>
+
+

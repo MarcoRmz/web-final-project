@@ -16,11 +16,13 @@
         <% rank += 1 %>
         <td><%= rank %></td>
         <td>
-          <% if character["name"] %>
-            <%= character["name"] %>
-          <% else %>
-            <i>No name</i>
-          <% end %>
+          <a href="<%= character['url'] %>">
+            <% if character["name"] %>
+              <%= character["name"] %>
+            <% else %>
+              <i>No name</i>
+            <% end %>
+          </a>
         </td>
         <td><%= character["level"] %></td>
         <td><%= character["experience"] %></td>

@@ -4,5 +4,6 @@ class CharactersController < ApplicationController
   end
 
   def show
+    @character = HTTParty.get('http://127.0.0.1:3000/character/' + params[:id] + '.json')
   end
 end
