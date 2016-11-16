@@ -75,6 +75,16 @@ p .features {
 	border-left: 4px solid rgba(0,128,0,1);
 }
 
+.followers ul {
+	list-style: none;
+	padding: 4px;
+}
+
+.followers a {
+	color: #365e36;
+	font-size: 18px;
+}
+
 .downloadBtn {
 	width: 250px;
 }

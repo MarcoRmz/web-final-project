@@ -17,7 +17,6 @@ class CharactersController < ApplicationController
     if current_user != nil
       @following = get_users(current_user.characters_followed)
     end
-
   end
 
   def search
