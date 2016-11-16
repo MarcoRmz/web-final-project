@@ -31,8 +31,48 @@ p .features {
 	color: #8BC34A;
 }
 
+.playerSearch {
+	margin-top: 12px;
+    padding: 4px;
+    width: 140px;
+    border-radius: 4px;
+    border: none;
+}
+
 .carousel {
 	max-width: 750px;
+}
+
+.announcements {
+	overflow: auto;
+	max-height: 280px;
+	color: white;
+	background-color: green;
+	border-radius: 6px;
+	padding: 8px;
+}
+
+.announcements::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 16px;
+}
+
+.announcements .title {
+	color: gold;
+}
+
+.announcements::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.3);
+    border-radius: 4px;
+    border-right: 4px solid rgba(0,128,0,1);
+    border-left: 4px solid rgba(0,128,0,1);
+}
+
+.announcements::-webkit-scrollbar-track {
+	background-color: #365e36;
+	border-radius: 4px;
+	border-right: 4px solid rgba(0,128,0,1);
+	border-left: 4px solid rgba(0,128,0,1);
 }
 
 .downloadBtn {

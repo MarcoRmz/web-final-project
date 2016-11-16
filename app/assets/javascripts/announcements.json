@@ -1,0 +1,19 @@
+{
+  "announcements": [
+    {
+      "date": "Oct/30/16",
+      "title": "Halloween theme!",
+      "content": "Check out the characters' Halloween costumes and the monsters as well!"
+    },
+    {
+      "date": "Nov/10/16",
+      "title": "Double XP Weekend!",
+      "content": "This weekend will be a double XP weekend, don't miss out!"
+    },
+    {
+      "date": "Nov/15/16",
+      "title": "Big things coming soon!",
+      "content": "New update coming out soon with a couple of new features and some bug fixing."
+    }
+  ]
+}
