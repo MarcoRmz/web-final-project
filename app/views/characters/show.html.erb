@@ -1,8 +1,13 @@
-<h1><%= @character["name"] %></h1>
-<p>Level: <%= @character["level"] %></p>
-<p>Experience: <%= @character["experience"] %></p>
-<p>Class: <%= @character["class"] %></p>
-<p>Member since: <%= @character["created_at"] %></p>
-<p>Last logged in: <%= @character["updated_at"] %></p>
-
-
+<% if @character.code != 200 %>
+  <h2>Character not found</h2>
+<% else %>
+  <h1><%= @character["name"] %></h1>
+  <% if current_user.uid == @character["google_id"] %>
+    <strong>You own this character</strong>
+  <% end %>
+  <p>Level: <%= @character["level"] %></p>
+  <p>Experience: <%= @character["experience"] %></p>
+  <p>Class: <%= @character["class"] %></p>
+  <p>Member since: <%= @character["created_at"] %></p>
+  <p>Last logged in: <%= @character["updated_at"] %></p>
+<% end %>

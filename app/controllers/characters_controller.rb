@@ -1,9 +1,13 @@
 class CharactersController < ApplicationController
   def highscores
-    @characters = HTTParty.get('http://127.0.0.1:3000/highscores/experience.json')
+    @characters = HTTParty.get(master_server + '/highscores/experience.json')
   end
 
   def show
-    @character = HTTParty.get('http://127.0.0.1:3000/character/' + params[:id] + '.json')
+    if params[:id].length <= 10
+      @character = HTTParty.get(master_server + '/character/' + params[:id] + '.json')
+    else 
+      @character = HTTParty.get(master_server + '/claim/' + params[:id] + '.json')
+    end
   end
 end

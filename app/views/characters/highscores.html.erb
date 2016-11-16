@@ -16,7 +16,7 @@
         <% rank += 1 %>
         <td><%= rank %></td>
         <td>
-          <a href="<%= character['url'] %>">
+          <a href="/characters/show/<%= character['id'] %>">
             <% if character["name"] %>
               <%= character["name"] %>
             <% else %>
