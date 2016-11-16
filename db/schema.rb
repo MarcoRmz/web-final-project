@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111191954) do
+ActiveRecord::Schema.define(version: 20161116213507) do
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20161111191954) do
     t.datetime "oauth_expires_at"
     t.string   "email"
     t.string   "access_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "following",        default: ""
   end
 
 end
