@@ -16,10 +16,10 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
-jQuery(window).load(function () {
-  console.log("TEST1");
+
+var ready = function() {
+  console.log("test1");
   $('#searchTextArea').bind("enterKey",function(e){
-    console.log("TEST2");
     window.location.href = "/search/" + $('#searchTextArea').val();
   });
   $('#searchTextArea').keyup(function(e){
@@ -28,5 +28,8 @@ jQuery(window).load(function () {
           $(this).trigger("enterKey");
       }
   });
-});
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', ready);
 
