@@ -9,6 +9,11 @@ class CharactersController < ApplicationController
     else 
       @character = HTTParty.get(master_server + '/claim/' + params[:id] + '.json')
     end
+
+    if @character != nil 
+      @owner = User.where(uid: @character["google_id"]).first
+    end
+    
     if current_user != nil
       @following = get_users(current_user.characters_followed)
     end
@@ -23,10 +28,15 @@ class CharactersController < ApplicationController
   def follow
     if current_user != nil && !current_user.character_followed?(params[:id])
       current_user.update_attribute(:following, current_user.following + " " + params[:id])
-      @following = get_users(current_user.characters_followed)
     end
-    @character = HTTParty.get(master_server + '/character/' + params[:id] + '.json')
-    render :show
+    redirect_to url_for(:controller => :characters, :action => :show)
+  end
+
+  def toggle_hide
+    if current_user != nil 
+      current_user.update_attribute(:hidden, !current_user.hidden)
+    end
+    redirect_to url_for(:controller => :characters, :action => :show, :id => current_user.uid)
   end
 
   private 

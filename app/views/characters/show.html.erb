@@ -1,19 +1,30 @@
 <% if @character.code != 200 %>
   <h2>Character not found</h2>
 <% else %>
-  <h1><%= @character["name"] %></h1>
+  <h1><%= @character["name"] %></h1><br>
+  
+
   <% if current_user.uid == @character["google_id"] %>
     <strong>You own this character</strong>
+    <% if current_user.hidden %>
+      <%= button_to "Set to public", {:controller => "characters", :action => "toggle_hide"} %>
+    <% else %>
+      <%= button_to "Set to private", {:controller => "characters", :action => "toggle_hide"} %>
+    <% end %>
   <% end %>
-  <p>Level: <%= @character["level"] %></p>
-  <p>Experience: <%= @character["experience"] %></p>
-  <p>Class: <%= @character["class"] %></p>
-  <p>Member since: <%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
-  <p>Last logged in: <%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
-  <% # raise 'boom' %>
 
-  <% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
-    <%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]} %>
+  <% if @owner != nil && @owner.hidden %>
+    <h3>Character is set to private</h3>
+  <% else %>
+    <p>Level: <%= @character["level"] %></p>
+    <p>Experience: <%= @character["experience"] %></p>
+    <p>Class: <%= @character["class"] %></p>
+    <p>Member since: <%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
+    <p>Last logged in: <%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
+
+    <% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
+      <%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]} %>
+    <% end %>
   <% end %>
 
   <% if @following != nil %>
