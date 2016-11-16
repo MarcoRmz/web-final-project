@@ -1,12 +1,20 @@
 <div>
 	<div class="row">
 		<% if @character.code != 200 %>
+		<div class="col-md-6">
 			<h2>Character not found</h2>
+		</div>
 		<% else %>
 			<div class="col-md-6">
-				<h2><%= @character["name"] %></h2>
-				<% if current_user.uid == @character["google_id"] %>
-					<strong>You own this character</strong>
+				<% if @character["name"] %>
+					<h2><%= @character["name"] %></h2>
+				<% else %>
+					<h2>No name</h2>
+				<% end %>
+				<% if current_user != nil%>
+					<% if current_user == @character["google_id"] %>
+						<strong>You own this character</strong>
+					<% end %>
 				<% end %>
 				<p><strong>Level: </strong><%= @character["level"] %></p>
 				<p><strong>Experience: </strong><%= @character["experience"] %></p>
@@ -17,20 +25,22 @@
 					<%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
 				<% end %>
 			</div>
-			<div class="col-md-6">
-				<h2>Following</h2>
+		<% end %>
+		<div class="col-md-6">
+			<% if current_user != nil%>
+				<h2><%= current_user.name %> Following</h2>
 				<div class="followers">
 					<% if @following != nil %>
 						<ul>
 							<% @following.each do |character| -%>
-							<li><a href="/characters/show/<%= character["id"] %>"><%= character["name"] %></a></li>
+							<li><a href="/characters/show/<%= character["id"] %>"><%= character["name"] || "No Name" %></a><p><strong>Level: </strong><%= character["level"] %><strong>&nbsp;&nbsp;&nbsp;&nbsp;Last logged in: </strong><%= ((Time.now - character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p></li>
 						<% end -%>
 						</ul>
 					<% else %>
 						<p>No followers to display</p>
 					<% end %>
 				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
