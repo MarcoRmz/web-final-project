@@ -9,6 +9,7 @@ class CharactersController < ApplicationController
     else 
       @character = HTTParty.get(master_server + '/claim/' + params[:id] + '.json')
     end
+      @followers = []
   end
 
   def search

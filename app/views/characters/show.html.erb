@@ -1,15 +1,33 @@
-<% if @character.code != 200 %>
-  <h2>Character not found</h2>
-<% else %>
-  <h1><%= @character["name"] %></h1>
-  <% if current_user.uid == @character["google_id"] %>
-    <strong>You own this character</strong>
-  <% end %>
-  <p>Level: <%= @character["level"] %></p>
-  <p>Experience: <%= @character["experience"] %></p>
-  <p>Class: <%= @character["class"] %></p>
-  <p>Member since: <%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
-  <p>Last logged in: <%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
-  <% # raise 'boom' %>
-
-<% end %>
+<div>
+	<div class="row">
+		<% if @character.code != 200 %>
+			<h2>Character not found</h2>
+		<% else %>
+			<div class="col-md-6">
+				<h2><%= @character["name"] %></h2>
+				<% if current_user.uid == @character["google_id"] %>
+					<strong>You own this character</strong>
+				<% end %>
+				<p><strong>Level: </strong><%= @character["level"] %></p>
+				<p><strong>Experience: </strong><%= @character["experience"] %></p>
+				<p><strong>Class: </strong><%= @character["class"] %></p>
+				<p><strong>Member since: </strong><%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
+				<p><strong>Last logged in: </strong><%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
+			</div>
+			<div class="col-md-6">
+				<h2>Following</h2>
+				<div class="followers">
+					<% if !@followers.empty? %>
+						<ul>
+							<% @followers.each do |val| -%>
+							<li><a href="/characters/show/<%= val %>"><%= val %></a></li>
+						<% end -%>
+						</ul>
+					<% else %>
+						<p>No followers to display</p>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
