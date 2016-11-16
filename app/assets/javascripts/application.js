@@ -18,7 +18,6 @@
 
 
 var ready = function() {
-  console.log("test1");
   $('#searchTextArea').bind("enterKey",function(e){
     window.location.href = "/search/" + $('#searchTextArea').val();
   });
