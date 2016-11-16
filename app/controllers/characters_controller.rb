@@ -10,4 +10,9 @@ class CharactersController < ApplicationController
       @character = HTTParty.get(master_server + '/claim/' + params[:id] + '.json')
     end
   end
+
+  def search
+    @characters = HTTParty.get(master_server + '/search.json?name=' + params[:name] + '&button=')
+    render :characters
+  end
 end

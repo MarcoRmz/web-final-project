@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'characters/highscores'
   get 'characters/show/:id', to: 'characters#show'
+  get 'search/:name', to: 'characters#search'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/500.html')

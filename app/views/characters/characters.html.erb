@@ -1,0 +1,39 @@
+<h1>Players</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Experience</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% rank = 0 %>
+    <% @characters.each do |character| %>
+      <tr>
+        <% rank += 1 %>
+        <td><%= rank %></td>
+        <td>
+          <a href="/characters/show/<%= character['id'] %>">
+            <% if character["name"] %>
+              <%= character["name"] %>
+            <% else %>
+              <i>No name</i>
+            <% end %>
+          </a>
+        </td>
+        <td><%= character["level"] %></td>
+        <td><%= character["experience"] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="pull-right">
+  <p>
+    <small>Last updated <%= Time.now.utc %> UTC</small>
+  </p>
+</div>

@@ -15,3 +15,18 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+jQuery(window).load(function () {
+  console.log("TEST1");
+  $('#searchTextArea').bind("enterKey",function(e){
+    console.log("TEST2");
+    window.location.href = "/search/" + $('#searchTextArea').val();
+  });
+  $('#searchTextArea').keyup(function(e){
+      if(e.keyCode == 13)
+      {
+          $(this).trigger("enterKey");
+      }
+  });
+});
+
