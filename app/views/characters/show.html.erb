@@ -8,6 +8,8 @@
   <p>Level: <%= @character["level"] %></p>
   <p>Experience: <%= @character["experience"] %></p>
   <p>Class: <%= @character["class"] %></p>
-  <p>Member since: <%= @character["created_at"] %></p>
-  <p>Last logged in: <%= @character["updated_at"] %></p>
+  <p>Member since: <%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
+  <p>Last logged in: <%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
+  <% # raise 'boom' %>
+
 <% end %>
