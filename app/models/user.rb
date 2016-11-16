@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def characters_followed
+    self.following.gsub(/\s+/m, ' ').strip.split(" ")
+  end
+
+  def character_followed?(id)
+    self.characters_followed.include?(id)
+  end
+
 end

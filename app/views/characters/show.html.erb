@@ -12,4 +12,14 @@
   <p>Last logged in: <%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
   <% # raise 'boom' %>
 
+  <% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
+    <%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]} %>
+  <% end %>
+
+  <% if @following != nil %>
+    <% @following.each do |character| %>
+      <p><%= character["name"] %></p>
+    <% end %>
+  <% end %>
+
 <% end %>

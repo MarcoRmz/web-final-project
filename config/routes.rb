@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'characters/highscores'
   get 'characters/show/:id', to: 'characters#show'
+  post 'characters/follow/:id', to: 'characters#follow'
   get 'search/:name', to: 'characters#search'
 
   get 'auth/:provider/callback', to: 'sessions#create'
