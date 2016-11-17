@@ -20,26 +20,36 @@
           <% end %>
         <% end %>
 
-        <% if @owner != nil && @owner.uid ==  current_user.uid %>
+        <% if @owner != nil && current_user != nil && @owner.uid == current_user.uid %>
         	<p><strong>Level: </strong><%= @character["level"] %></p>
-			<p><strong>Experience: </strong><%= @character["experience"] %></p>
-			<p><strong>Class: </strong><%= @character["class"] %></p>
-			<p><strong>Member since: </strong><%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
-			<p><strong>Last logged in: </strong><%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
-			<% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
-				<%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
-			<% end %>
-		<% elsif @owner != nil && @owner.hidden%>
-			<h3>Character is set to private</h3>
-		<% else %>
-			<p><strong>Level: </strong><%= @character["level"] %></p>
-			<p><strong>Experience: </strong><%= @character["experience"] %></p>
-			<p><strong>Class: </strong><%= @character["class"] %></p>
-			<p><strong>Member since: </strong><%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
-			<p><strong>Last logged in: </strong><%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
-			<% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
-				<%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
-			<% end %>
+    			<p><strong>Experience: </strong><%= @character["experience"] %></p>
+    			<p><strong>Class: </strong><%= @character["class"] %></p>
+          <p><strong>Melee Level: </strong><%= @character["melee"] %></p>
+          <p><strong>Distance Level: </strong><%= @character["distance"] %></p>
+          <p><strong>Magic Level: </strong><%= @character["magic"] %></p>
+    			<p><strong>Member since: </strong><%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
+    			<p><strong>Last logged in: </strong><%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
+    			<% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
+    				<%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
+          <% elsif current_user != nil %>
+            <%= button_to "Unfollow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
+    			<% end %>
+    		<% elsif @owner != nil && @owner.hidden%>
+    			<h3>Character is set to private</h3>
+    		<% else %>
+    			<p><strong>Level: </strong><%= @character["level"] %></p>
+    			<p><strong>Experience: </strong><%= @character["experience"] %></p>
+    			<p><strong>Class: </strong><%= @character["class"] %></p>
+          <p><strong>Melee Level: </strong><%= @character["melee"] %></p>
+          <p><strong>Distance Level: </strong><%= @character["distance"] %></p>
+          <p><strong>Magic Level: </strong><%= @character["magic"] %></p>
+    			<p><strong>Member since: </strong><%= @character["created_at"].to_time.to_formatted_s(:long)  %></p>
+    			<p><strong>Last logged in: </strong><%= ((Time.now - @character["updated_at"].to_time)/60/60/24).round.to_i %> days ago</p>
+    			<% if current_user != nil  && !current_user.character_followed?(@character["id"].to_s) %>
+    				<%= button_to "Follow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
+          <% elsif current_user != nil %>
+            <%= button_to "Unfollow Player", {:controller => "characters", :action => "follow", :id => @character["id"]}, :class => "btn btn-success" %>
+    			<% end %>
         <% end %>
 			</div>
 		<% end %>

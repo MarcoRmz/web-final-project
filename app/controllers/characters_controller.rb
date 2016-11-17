@@ -27,6 +27,15 @@ class CharactersController < ApplicationController
   def follow
     if current_user != nil && !current_user.character_followed?(params[:id])
       current_user.update_attribute(:following, current_user.following + " " + params[:id])
+    else
+      newfollow = ""
+      current_user.characters_followed.each do |id|
+        if id != params[:id]
+          newfollow += " " + id
+        end
+      end
+      current_user.following = newfollow
+      current_user.save
     end
     redirect_to url_for(:controller => :characters, :action => :show)
   end

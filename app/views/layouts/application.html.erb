@@ -20,6 +20,11 @@
 							<li>
 								<%= link_to "Character - " + current_user.name,   '/characters/show/' + current_user.uid %>
 							</li>
+							<% if current_user.access_type == "1" %>
+								<li>
+									<%= link_to "Dashboard",   'https://www.rucoyonline.com/?p=654987321' %>
+								</li>
+							<% end %>
 							<li>
 								<%= link_to "Sign out", signout_path, id: "sign_out" %>
 							</li>

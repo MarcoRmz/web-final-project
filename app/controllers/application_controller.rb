@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
  
   def master_server
-    'http://192.168.15.184:3001'
+    'http://127.0.0.1:3001'
   end
 
   def current_user
